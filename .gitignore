@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+test-report/
+package-lock.json
+chrome-app/
+chrome-extension/
