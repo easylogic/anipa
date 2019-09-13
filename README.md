@@ -1,7 +1,7 @@
 # Anipa
 
 
-JS Animation Library to play easylogic.studio 
+JS Animation Library with timeline 
 
 
 ## JS Animation 

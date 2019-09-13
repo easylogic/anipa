@@ -1,5 +1,5 @@
 {
-  "name": "anipa",
+  "name": "@easylogic/anipa",
   "version": "0.0.1",
   "description": "js animation library",
   "main": "dist/main.js",
