@@ -58,10 +58,12 @@ function makeInterpolateCustom (property) {
 function makeInterpolate (layer, property, startValue, endValue) {
     switch(property) {
     case 'width':
+    case 'left':
     case 'x':
         return makeInterpolateLength(layer, property, startValue, endValue, 'width');
     case 'height':
-    case 'y':
+    case 'top':
+    case 'y':        
         return makeInterpolateLength(layer, property, startValue, endValue, 'height');
     case 'perspective':
     case 'font-size':

@@ -31,7 +31,6 @@ export class Timeline {
     container = container === 'body' ? document.body : container; 
     var $container = Dom.create(container);
 
-
     return $container.$$(selector);
   }
 
