@@ -10,6 +10,7 @@ export function Player (animations = [], options = {fps: 60, duration: 1000, con
   var duration = isUndefined(options.duration) ? 1000 : +options.duration;
   var iterationCount = isUndefined(options.iterationCount) ? 1 : +options.iterationCount;
   var direction = isUndefined(options.direction) ?  'normal' : options.direction;
+  var debug = isUndefined(options.debug) ? false : options.debug;
 
   var onTick = () => {}
   var onStart = () => {}
@@ -24,6 +25,7 @@ export function Player (animations = [], options = {fps: 60, duration: 1000, con
   if (isFunction(options.onLast)) { onLast = options.onLast; }    
 
   var timeline = new Timeline(animations, {
+    debug,
     fps,
     container,
     totalTimecode: timecode(fps, duration/1000),
@@ -41,6 +43,9 @@ export function Player (animations = [], options = {fps: 60, duration: 1000, con
     tick: (elapsed, timer) => {
       timeline.seek(timecode(timeline.fps, elapsed / 1000))
       onTick(elapsed, timer, fps);
+      if (debug) {
+        console.log('tick : ', timeline.fps, elapsed, timer);
+      }
     }    
   })
 

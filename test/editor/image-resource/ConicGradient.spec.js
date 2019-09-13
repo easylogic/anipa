@@ -1,13 +1,13 @@
-import { editor } from "../../../src/editor/editor";
+
 import { ConicGradient } from "../../../src/editor/image-resource/ConicGradient";
 import { ColorStep } from "../../../src/editor/image-resource/ColorStep";
 
 beforeEach(() => {
-    editor.clear();
+
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
 
 test('ConicGradient - new ConicGradient', () => {

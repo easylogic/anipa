@@ -1,4 +1,4 @@
-import { isString, isNumber, isNotUndefined, isFunction } from "./func";
+import { isString, isNumber, isFunction } from "./func";
 
 
 export function second (fps, timecode) {

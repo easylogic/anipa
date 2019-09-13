@@ -1,14 +1,14 @@
-import { editor } from "../../../src/editor/editor";
+
 import { RepeatingLinearGradient } from "../../../src/editor/image-resource/RepeatingLinearGradient";
 import { ColorStep } from "../../../src/editor/image-resource/ColorStep";
 
 beforeEach(() => {
-    editor.clear();
+
 
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
 
 test('RepeatingLinearGradient - new RepeatingLinearGradient', () => {

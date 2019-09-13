@@ -1,14 +1,13 @@
-import { editor } from "../../../src/editor/editor";
 import { BlurFilter, GrayscaleFilter, HueRotateFilter, InvertFilter, BrightnessFilter, ContrastFilter, DropshadowFilter } from "../../../src/editor/css-property/Filter";
 import { Length } from "../../../src/editor/unit/Length";
 
 beforeEach(() => {
-    editor.clear();
+
 
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
 
 test('Filter - new BlurFilter', () => {

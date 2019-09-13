@@ -1,14 +1,14 @@
 import { second, timecode, framesToTimecode } from "../util/functions/time";
 import { createInterpolateFunction, createTimingFunction } from "./util/interpolate";
 import Dom from "../util/Dom";
-import { isNotUndefined, isObject, isArray, isString, isUndefined } from "../util/functions/func";
-import { allSettled } from "q";
+import { isNotUndefined, isArray, isUndefined } from "../util/functions/func";
 
 export class Timeline {
   constructor (animations = [], options = { container: 'body'}) {
     this.animations = animations; 
     this.compiledAnimation = [] 
     this.options = options 
+    this.debug = options.debug || false;
 
     this.fps = options.fps || 60
     this.totalTime = second(this.fps, options.totalTimecode);
@@ -19,6 +19,12 @@ export class Timeline {
     this.endTime = this.totalTime; 
 
     this.initialize();
+  }
+
+  log () {
+    if (this.debug) {
+      console.log(...arguments);
+    }
   }
 
   searchBySelector (selector, container = 'body') {
@@ -38,6 +44,7 @@ export class Timeline {
         animation.compiled[`${p.property}`] = this.compiledTimingFunction(elements, p);
       })
     })
+    this.log('timeline is initialized.');
   }
   
 
@@ -151,7 +158,7 @@ export class Timeline {
     }
 
     var time = this.currentTime * 1000;
-
+    this.log('seek start : ', time);
     var filteredList = this.searchTimelineOffset(time).filter(filterFunction)
 
     var layerSet = new WeakMap();
@@ -172,14 +179,17 @@ export class Timeline {
           [it.property]: it.func(time, it.layer, it.layerIndex)
         });        
       }
+
+
     });
 
     // console.log(layerSet)
 
     layerList.forEach(layer => {
       layer.css(layerSet.get(layer));
+      this.log(layer, layerSet.get(layer))
     }) 
-
+    this.log('seek end : ', time);
   }
  
 

@@ -1,13 +1,11 @@
-import { editor } from "../../../src/editor/editor";
 import { StaticGradient } from "../../../src/editor/image-resource/StaticGradient";
 
 beforeEach(() => {
-    editor.clear();
 
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
 
 test('StaticGradient - new StaticGradient', () => {

@@ -1,14 +1,14 @@
 import { Gradient } from "../../../src/editor/image-resource/Gradient";
-import { editor } from "../../../src/editor/editor";
+
 import { ColorStep } from "../../../src/editor/image-resource/ColorStep";
 
 beforeEach(() => {
-    editor.clear();
+
 
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
  
 test('Gradient - new Gradient', () => {

@@ -1,13 +1,12 @@
-import { editor } from "../../../src/editor/editor";
 import { ColorStep } from "../../../src/editor/image-resource/ColorStep";
 import { LinearGradient } from "../../../src/editor/image-resource/LinearGradient";
 
 beforeEach(() => {
-    editor.clear();
+
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
 
 test('ColorStep - new ColorStep', () => {

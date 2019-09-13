@@ -1,4 +1,3 @@
-import { html } from "../src/util/functions/func";
 import { timecodeToFrames, framesToTimecode } from "../src/util/functions/time";
 
 test('func - timecodeToFrames', () => {

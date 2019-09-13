@@ -1,15 +1,15 @@
-import { editor } from "../../../src/editor/editor";
+
 import { RadialGradient } from "../../../src/editor/image-resource/RadialGradient";
 import { ColorStep } from "../../../src/editor/image-resource/ColorStep";
 import { Length } from "../../../src/editor/unit/Length";
 
 beforeEach(() => {
-    editor.clear();
+
 
 })
 
 afterEach( () => {
-    editor.clear();
+
 })
 
 test('RadialGradient - new RadialGradient', () => {
