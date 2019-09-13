@@ -5,7 +5,6 @@ import {
   isNotString,
   isNotUndefined
 } from "./functions/func";
-import { DomDiff } from "./DomDiff";
 import { Length } from "../editor/unit/Length";
 
 let counter = 0;
@@ -191,19 +190,6 @@ export default class Dom {
     }
 
     return this;
-  }
-
-  htmlDiff(fragment) {
-    if (!this.fragment) {
-      this.empty().append(fragment);
-      this.fragment = true;
-    } else {
-      var childFragment = this.createChildrenFragment();
-
-      DomDiff(childFragment, fragment);
-
-      this.html(childFragment)
-    }
   }
 
   find(selector) {
@@ -471,35 +457,6 @@ export default class Dom {
     );
   }
 
-  dataKey(key) {
-    return this.uniqId + "." + key;
-  }
-
-  data(key, value) {
-    if (arguments.length == 2) {
-      cached[this.dataKey(key)] = value;
-    } else if (arguments.length == 1) {
-      return cached[this.dataKey(key)];
-    } else {
-      var keys = Object.keys(cached);
-
-      var uniqId = this.uniqId + ".";
-      return keys
-        .filter(function(key) {
-          if (key.indexOf(uniqId) == 0) {
-            return true;
-          }
-
-          return false;
-        })
-        .map(function(value) {
-          return cached[value];
-        });
-    }
-
-    return this;
-  }
-
   val(value) {
     if (isUndefined(value)) {
       return this.el.value;
@@ -528,63 +485,6 @@ export default class Dom {
   get naturalHeight () {
     return this.el.naturalHeight
   }  
-
-  get files() {
-    return this.el.files ? [...this.el.files] : [];
-  }
-
-  realVal() {
-    switch (this.el.nodeType) {
-      case "INPUT":
-        var type = this.attr("type");
-        if (type == "checkbox" || type == "radio") {
-          return this.checked();
-        }
-      case "SELECT":
-      case "TEXTAREA":
-        return this.el.value;
-    }
-
-    return "";
-  }
-
-  int() {
-    return parseInt(this.val(), 10);
-  }
-
-  float() {
-    return parseFloat(this.val());
-  }
-
-  show(displayType = "block") {
-    return this.css("display", displayType != "none" ? displayType : "block");
-  }
-
-  hide() {
-    return this.css("display", "none");
-  }
-
-  isHide () {
-    return this.css("display") == "none"
-  }
-
-  toggle(isForce) {
-    var currentHide = this.isHide();
-
-    if (arguments.length == 1) {
-      if (currentHide && isForce) {
-        return this.show();
-      } else {
-        return this.hide();
-      }
-    } else {
-      if (currentHide) {
-        return this.show();
-      } else {
-        return this.hide();
-      }
-    }
-  }
 
   scrollIntoView () {
     this.el.scrollIntoView()
@@ -633,18 +533,6 @@ export default class Dom {
   scrollWidth() {
     return this.el.scrollWidth;
   }  
-
-  on(eventName, callback, opt1, opt2) {
-    this.el.addEventListener(eventName, callback, opt1, opt2);
-
-    return this;
-  }
-
-  off(eventName, callback) {
-    this.el.removeEventListener(eventName, callback);
-
-    return this;
-  }
 
   getElement() {
     return this.el;
@@ -699,122 +587,5 @@ export default class Dom {
     return this;
   }  
 
-  checked(isChecked = false) {
-    if (arguments.length == 0) {
-      return !!this.el.checked;
-    }
 
-    this.el.checked = !!isChecked;
-
-    return this;
-  }
-
-
-  click () {
-    this.el.click();
-
-    return this; 
-  }  
-
-  focus() {
-    this.el.focus();
-
-    return this;
-  }
-
-  select() {
-    this.el.select();
-    return this;
-  }
-
-  blur() {
-    this.el.blur();
-
-    return this;
-  }
-
-  select() {
-    this.el.select();
-
-    return this;
-  }
-
-  // canvas functions
-
-  context(contextType = "2d") {
-    if (!this._initContext) {
-      this._initContext = this.el.getContext(contextType);
-    }
-
-    return this._initContext;
-  }
-
-  resize({ width, height }) {
-    // support hi-dpi for retina display
-    this._initContext = null;
-    var ctx = this.context();
-    var scale = window.devicePixelRatio || 1;
-
-    this.px("width", width);
-    this.px("height", height);
-
-    this.el.width = width * scale;
-    this.el.height = height * scale;
-
-    ctx.scale(scale, scale);
-  }
-
-  clear() {
-    this.context().clearRect(0, 0, this.el.width, this.el.height);
-  }
-
-  update(callback) {
-    this.clear();
-    callback.call(this, this);
-  }
-
-  drawOption(option = {}) {
-    var ctx = this.context();
-
-    Object.assign(ctx, option);
-  }
-
-  drawLine(x1, y1, x2, y2) {
-    var ctx = this.context();
-
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
-  }
-
-  drawPath(...path) {
-    var ctx = this.context();
-
-    ctx.beginPath();
-
-    path.forEach((p, index) => {
-      if (index == 0) {
-        ctx.moveTo(p[0], p[1]);
-      } else {
-        ctx.lineTo(p[0], p[1]);
-      }
-    });
-    ctx.stroke();
-    ctx.fill();
-    ctx.closePath();
-  }
-
-  drawCircle(cx, cy, r) {
-    var ctx = this.context();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill();
-  }
-
-  drawText(x, y, text) {
-    this.context().fillText(text, x, y);
-  }
 }

@@ -122,55 +122,6 @@ export function repeat (count) {
     return [...Array(count)];
 }
 
-
-const short_tag_regexp = /\<(\w*)([^\>]*)\/\>/gim;
-
-const HTML_TAG = {
-    'image': true,
-    'input': true,
-    'br': true,
-    'path': true 
-}
-
-
-export const html = (strings, ...args) => {
-
-    var results =  strings.map((it, index) => {
-        
-        var results = args[index] || ''
-
-        if (isFunction(results)) {
-            results = results()
-        }
-
-        if (!isArray(results)) {
-            results = [results]
-        }
-
-        results = results.map(r => {
-            if (isObject(r) && !isArray(r)) {
-                return Object.keys(r).map(key => {
-                    return `${key}="${r[key]}"`
-                }).join(' ')
-            }
-
-            return r
-        }).join('')
-
-        return it + results;
-    }).join('');
-
-    results = results.replace(short_tag_regexp, function (match, p1) {
-        if (HTML_TAG[p1.toLowerCase()]) {
-            return match;
-        } else {
-            return match.replace('/>', `></${p1}>`)
-        }
-    })
-
-    return results; 
-}
-
 export function CSS_TO_STRING(style, postfix = '') {
     var newStyle = style;
   
@@ -194,32 +145,4 @@ export function STRING_TO_CSS (str) {
     })
 
     return style;
-}
-
-export function OBJECT_TO_PROPERTY (obj) {
-    return Object.keys(obj).map(key => {
-
-        if (key === 'class') {
-            if (isObject(obj[key])) {
-                return `${key}="${OBJECT_TO_CLASS(obj[key])}"`
-            }
-        }
-
-        if (isBoolean(obj[key])) {
-            if (obj[key]) {
-                return key;
-            } else {
-                return '';
-            }
-
-        } 
-
-        return `${key}="${obj[key]}"`
-    }).join(' ');
-}
-
-export function OBJECT_TO_CLASS (obj) {
-    return Object.keys(obj).filter(k => obj[k]).map(key => {
-        return key
-    }).join(' ');
 }
