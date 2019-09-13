@@ -3,6 +3,27 @@
 
 JS Animation Library with timeline 
 
+[![](https://data.jsdelivr.com/v1/package/npm/@easylogic/anipa/badge)](https://www.jsdelivr.com/package/npm/@easylogic/anipa)
+
+## How to use in Browser 
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@easylogic/anipa@0.0.1/dist/main.js"></script>
+<script type="text/javascript">
+var Player = anipa.Player; 
+</script>
+
+```
+
+## How to use in es6 
+
+```sh
+npm install --save @easylogic/anipa
+```
+
+```js
+import { Player } from '@easylogic/anipa'
+```
 
 ## JS Animation 
 
