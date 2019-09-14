@@ -27,9 +27,93 @@
       display: inline-block;
       position: relative;
     }
+
+
+    
+[data-id='idf269294'] {  /* artboard */
+    left: 300px;
+top: 300px;
+visibility: visible;
+position: absolute;
+width: 375px;
+height: 720px;
+background-color: white;
+font-size: 13px; 
+    
+        left: 0px;
+        top: 0px;
+      
+}
+
+
+
+
+
+    
+    
+[data-id='ide4c5a99'] {  /* svg-path */
+    left: 100px;
+top: 100px;
+visibility: visible;
+position: absolute;
+width: 267px;
+height: 257px;
+overflow: visible;
+font-size: 13px; 
+    
+}
+
+[data-id='ide4c5a99'] path { 
+fill: transparent;
+fill-opacity: 1;
+marker-start: url(#start);
+marker-end: url(#head);
+stroke: rgba(0, 0, 0, 0.2); 
+  }
+
+
+
+    
+    
+[data-id='id62d9368'] {  /* layer */
+    left: -264.5px;
+top: -39px;
+visibility: visible;
+position: absolute;
+width: 163px;
+height: 116px;
+background-color: rgb(244,89,99);
+font-size: 13px;
+transform: rotate(337.7107899355409deg); 
+    
+}
+
+
+
     </style>
   </head>
   <body>
+
+
+      
+      <div class='element-item artboard' data-id="idf269294">
+      
+          <svg class='element-item path motion-based' data-id="ide4c5a99" >
+            <path class='svg-path-item' d="M 0 91L 222 0L 267 212L 57 257L 14 127L 0 91Z" />
+          </svg>    
+        
+        <div class='element-item layer' data-id="id62d9368">
+          
+        </div>
+        
+        </div>
+        
+          
+          <svg width="0" height="0">
+          
+        </svg>
+<!--         
+
       <div class="container">
         <div class="sample"></div>
         <div class="sample"></div>
@@ -44,51 +128,82 @@
         <div class="sample"></div>
         <div class="sample"></div>
         <div class="sample"></div>
-      </div>
+      </div> -->
      
         <script type="text/javascript">
 
-          var player = new anipa.Player([
-            {selector: '.sample', properties: [
-              {
-                property: 'width', 
-                keyframes: [ 
-                  [500, '0%'],
-                  [3000, '100px'],
-                  [5000, '10px']
+var player = new anipa.Player([
+    {
+        "properties": [
+            {
+                "property": "offset-path",
+                "keyframes": [
+                    {
+                        "time": 0,
+                        "value": "ide4c5a99,,,",
+                        "timing": "linear"
+                    },
+                    {
+                        "time": 5580.645161290323,
+                        "value": "ide4c5a99,,,",
+                        "timing": "linear"
+                    }
                 ]
-              },
-              {
-                property: 'left', 
-                keyframes: [ 
-                  [500, '0%'],
-                  [3000, '30%'],
-                  [5000, '0%']
-                ]
-              },              
-              {
-                property: 'height', 
-                keyframes: [ 
-                  [1000],
-                  [2000, '100px']
-                ] 
-              }//,
-              // {
-              //   property: 'background-image',
-              //   keyframes: [
-              //     [0, 'background-image: linear-gradient(0deg, white 10%, blue 50%, yellow 100%)'],
-              //     [2500, 'background-image: linear-gradient(3600deg, white 10%, blue 20%, red 100%)'],
-              //     [5000, 'background-image: linear-gradient(1200deg, white 10%, red 20%, blue 100%)']
-              //   ]
-              // }
-            ]}
-          ], {
-            // debug: true, 
-            duration: 5000,
-            iterationCount: 1,
-            direction: 'alternate'
-          })
-          player.play();
+            }
+        ],
+        "selector": "[data-id=\"id62d9368\"]"
+    }
+], {
+    "duration": 5580.645161290323,
+    "iterationCount": 1,
+    "fps": 60,
+    "speed": 1,
+    "direction": "normal"
+});
+player.play();
+        
+        
+          // var player = new anipa.Player([
+          //   {selector: '.sample', properties: [
+          //     {
+          //       property: 'width', 
+          //       keyframes: [ 
+          //         [500, '0%'],
+          //         [3000, '100px'],
+          //         [5000, '10px']
+          //       ]
+          //     },
+          //     {
+          //       property: 'left', 
+          //       keyframes: [ 
+          //         [500, '0%'],
+          //         [3000, '30%'],
+          //         [5000, '0%']
+          //       ]
+          //     },              
+          //     {
+          //       property: 'height', 
+          //       keyframes: [ 
+          //         [1000],
+          //         [2000, '100px']
+          //       ] 
+          //     }//,
+          //     // {
+          //     //   property: 'background-image',
+          //     //   keyframes: [
+          //     //     [0, 'background-image: linear-gradient(0deg, white 10%, blue 50%, yellow 100%)'],
+          //     //     [2500, 'background-image: linear-gradient(3600deg, white 10%, blue 20%, red 100%)'],
+          //     //     [5000, 'background-image: linear-gradient(1200deg, white 10%, red 20%, blue 100%)']
+          //     //   ]
+          //     // }
+          //   ]}
+          // ], {
+          //   // debug: true, 
+          //   duration: 5000,
+          //   iterationCount: 1,
+          //   direction: 'alternate'
+          // })
+          // player.play();
         </script>
   </body>
 </html>

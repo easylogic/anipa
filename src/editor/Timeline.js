@@ -27,20 +27,24 @@ export class Timeline {
     }
   }
 
-  searchBySelector (selector, container = 'body') {
+  searchBySelector (selector, $container) {
+    return $container.$$(selector);
+  }
+
+  createContainerElement (container) {
     container = container === 'body' ? document.body : container; 
     var $container = Dom.create(container);
 
-    return $container.$$(selector);
+    return $container;
   }
 
   initialize() {
     this.animations.forEach(animation => {
-      var container = animation.container || this.options.container || 'body';
-      var elements = this.searchBySelector(animation.selector, container);
+      var $container = this.createContainerElement(animation.container || this.options.container || 'body');
+      var elements = this.searchBySelector(animation.selector, $container);
       animation.compiled = {}
       animation.properties.forEach(p => {
-        animation.compiled[`${p.property}`] = this.compiledTimingFunction(elements, p);
+        animation.compiled[`${p.property}`] = this.compiledTimingFunction(elements, p, $container);
       })
     })
     this.log('timeline is initialized.');
@@ -81,7 +85,7 @@ export class Timeline {
     return offset; 
   }
 
-  compiledTimingFunction (elements = [], p) {
+  compiledTimingFunction (elements = [], p, container) {
 
     let compiledFunctions = [] 
 
@@ -110,7 +114,7 @@ export class Timeline {
           startValue: currentOffset.value,
           endValue: nextOffset.value,
           timing: currentOffset.timing,
-          interpolateFunction: createInterpolateFunction(layer, p.property, currentOffset.value, nextOffset.value),
+          interpolateFunction: createInterpolateFunction(layer, p.property, currentOffset.value, nextOffset.value, container),
           timingFunction: createTimingFunction(currentOffset.timing)
         }
 

@@ -34,6 +34,8 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       inject: 'head',
+      minify: false,
+      minifyCSS: false,
       chunks: ["main"],
       template: "./src/index.html",
       filename: "./index.html"

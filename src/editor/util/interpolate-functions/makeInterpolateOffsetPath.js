@@ -3,8 +3,9 @@ import PathParser from "../../parse/PathParser";
 import makeInterpolateOffset from "./offset-path/makeInterpolateOffset";
 import { Length } from "../../unit/Length";
 import { calculateAngle } from "../../../util/functions/math";
+import { Transform } from "../../css-property/Transform";
 
-export function makeInterpolateOffsetPath(layer, property, startValue, endValue) {
+export function makeInterpolateOffsetPath(layer, property, startValue, endValue, container) {
 
     var [id, distance, rotateStatus, rotate] = startValue.split(',').map(it =>it.trim());
 
@@ -15,7 +16,7 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue)
         return { x, y }
     }
 
-    var innerInterpolateAngle = (currentAngle) => {
+    var innerInterpolateAngle = (rotateStatus, currentAngle) => {
 
         switch (rotateStatus) {
         case 'angle': return startObject.rotate.value;
@@ -28,14 +29,17 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue)
 
     var screenX = 0, screenY = 0
 
-    if (artboard) {
-        var pathLayer = {d: 'path info'}
+    if (container) {
+        var svgLayer = container.$(`[data-id="${startObject.id}"]`)
+        var pathLayer = svgLayer.$('path');
+        var rect = svgLayer.rect();
         // parser.translate(pathLayer.screenX.value, pathLayer.screenY.value)
-        screenX = pathLayer.screenX.value
-        screenY = pathLayer.screenY.value        
+        screenX = rect.left
+        screenY = rect.top
 
         innerInterpolate = (rate, t, timing) => {
-            var parser = new PathParser(pathLayer.d);            
+            // console.log(pathLayer, pathLayer.attr('d'),  pathLayer.css('d'))
+            var parser = new PathParser(pathLayer.attr('d'));
             var {totalLength, interpolateList} = makeInterpolateOffset(parser.segments); 
 
             var distance = startObject.distance.toPx(totalLength)
@@ -81,21 +85,21 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue)
 
         // apply tranform-origin in real time 
 
-        var arr = (layer['transform-origin'] || '50% 50%').split(' ').map(it => Length.parse(it))
-        var tx = arr[0].toPx(layer.width.value);
-        var ty = arr[1].toPx(layer.height.value);
+        var arr = (layer.css('transform-origin') || '50% 50%').split(' ').map(it => Length.parse(it))
+        var tx = arr[0].toPx(Length.parse(layer.css('width')).value);
+        var ty = arr[1].toPx(Length.parse(layer.css('height')).value);
 
         var obj = innerInterpolate(rate, t, timing); 
 
         var results = {
-            x: obj.x + screenX - tx.value,
-            y: obj.y + screenY - ty.value
+            left: Length.px(obj.x + screenX - tx.value),
+            top: Length.px(obj.y + screenY - ty.value)
         }
 
         // console.log(results, rate, t);
 
-        layer.setScreenX(results.x)
-        layer.setScreenY(results.y)
+        // layer.setScreenX(results.x)
+        // layer.setScreenY(results.y)
 
 
         if (startObject.rotateStatus === 'element') {
@@ -104,8 +108,29 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue)
             var current = obj
             var next = innerInterpolate(rate + 1/obj.totalLength, t + 1/obj.totalLength, timing); 
             var angle = calculateAngle(next.x - current.x, next.y - current.y)
-            var newAngle = Length.deg(innerInterpolateAngle(angle))            
-            layer.rotate = newAngle;
+
+            var newAngle = Length.deg(innerInterpolateAngle(startObject.rotateStatus, angle))
+            // layer.rotate = newAngle;
+
+            var transform = layer.css('transform') || '';
+
+            // transform 을 어떻게 변형하지 
+            if (transform.indexOf('rotate') === -1) {
+                results.transform = `rotate(${newAngle})`
+            } else {
+                var arr = Transform.parseStyle(transform) 
+                var rotateProperty = arr.filter(it => ['rotate', 'rotateZ'].includes(it.type));
+
+                if (rotateProperty.length) {
+                    rotateProperty[0].value = [newAngle]
+                } else {
+                    arr.push({
+                        type: 'rotate',
+                        value: [newAngle]
+                    })
+                }
+                results.transform = Transform.join(arr);
+            }
         }
 
 

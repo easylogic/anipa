@@ -55,55 +55,55 @@ function makeInterpolateCustom (property) {
 }
 
 
-function makeInterpolate (layer, property, startValue, endValue) {
+function makeInterpolate (layer, property, startValue, endValue, container) {
     switch(property) {
     case 'width':
     case 'left':
     case 'x':
-        return makeInterpolateLength(layer, property, startValue, endValue, 'width');
+        return makeInterpolateLength(layer, property, startValue, endValue, 'width', container);
     case 'height':
     case 'top':
     case 'y':        
-        return makeInterpolateLength(layer, property, startValue, endValue, 'height');
+        return makeInterpolateLength(layer, property, startValue, endValue, 'height', container);
     case 'perspective':
     case 'font-size':
     case 'font-stretch':
     case 'font-weight':
     case 'text-stroke-width':
-        return makeInterpolateLength(layer, property, startValue, endValue, property);
+        return makeInterpolateLength(layer, property, startValue, endValue, property, container);
     case 'fill-opacity':
     case 'opacity':
     case 'stroke-dashoffset':
-        return makeInterpolateNumber(layer, property, +startValue, +endValue);
+        return makeInterpolateNumber(layer, property, +startValue, +endValue, container);
     case 'background-color':
     case 'color':
     case 'text-fill-color':
     case 'text-stroke-color':
     case 'fill':
     case 'stroke':
-        return makeInterpolateColor(layer, property, startValue, endValue);
+        return makeInterpolateColor(layer, property, startValue, endValue, container);
     case 'mix-blend-mode':
     case 'fill-rule':
     case 'stroke-linecap':
     case 'stroke-linejoin':
-        return makeInterpolateString(layer, property, startValue, endValue); 
+        return makeInterpolateString(layer, property, startValue, endValue, container); 
     case 'rotate':
-        return makeInterpolateRotate(layer, property, startValue, endValue);               
+        return makeInterpolateRotate(layer, property, startValue, endValue, container);
     }
 
     
     var func = makeInterpolateCustom(property)
 
     if (func) {
-        return func(layer, property, startValue, endValue)
+        return func(layer, property, startValue, endValue, container)
     }
 
     return DEFAULT_FUCTION
 }
 
 
-export function createInterpolateFunction (layer, property, startValue, endValue) {
-    return makeInterpolate(layer, property, startValue, endValue);
+export function createInterpolateFunction (layer, property, startValue, endValue, container) {
+    return makeInterpolate(layer, property, startValue, endValue, container);
 }
 
 
