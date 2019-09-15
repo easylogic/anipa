@@ -38,6 +38,7 @@ export function makeInterpolatePolygon (layer, property, startValue, endValue) {
         }
         
     }
+ 
 
     return (rate, t) => {
         var points = returnParser.joinPoints(list.map(it => {
@@ -47,6 +48,6 @@ export function makeInterpolatePolygon (layer, property, startValue, endValue) {
             }
         }))
 
-        return points;
+        layer.attr("points", points);
     } 
 }

@@ -87,6 +87,12 @@ export default class Dom {
     return this;
   }
 
+  setAttr (obj) {
+    Object.keys(obj).forEach(key => {
+      this.el.setAttribute(key, obj[key])
+    })
+  }
+
   attrKeyValue(keyField) {
     return {
       [this.el.getAttribute(keyField)]: this.val()

@@ -108,6 +108,7 @@ export class Timeline {
           layerIndex,
           property: p.property,
           isResetFunction: this.checkResetInterpolateFunction(p.property),
+          isAttributeFunction: this.checkResetAttributeFunction(p.property),
           isOnlyTime: currentOffset.time === nextOffset.time,
           startTime: currentOffset.time,
           endTime: nextOffset.time, 
@@ -153,6 +154,17 @@ export class Timeline {
     return false; 
   }
 
+  checkResetAttributeFunction (property) {
+
+    switch(property) {
+    case 'd':
+    case 'points':
+      return true; 
+    }
+
+    return false; 
+  }  
+
   seek (frameOrCode = null, filterFunction = (it => it)) {
 
 
@@ -174,7 +186,10 @@ export class Timeline {
 
       var layerCss = layerSet.get(it.layer)
 
-      if (it.isResetFunction) {
+
+      if (it.isAttributeFunction) {
+        it.func(time, it.layer, it.layerIndex);
+      } else if (it.isResetFunction) {
         var obj =  it.func(time, it.layer, it.layerIndex);
         Object.assign(layerCss, obj);
       } else {
@@ -182,11 +197,7 @@ export class Timeline {
           [it.property]: it.func(time, it.layer, it.layerIndex)
         });        
       }
-
-
     });
-
-    // console.log(layerSet)
 
     layerList.forEach(layer => {
       layer.css(layerSet.get(layer));

@@ -30,7 +30,7 @@
 
 
     
-[data-id='idf269294'] {  /* artboard */
+    [data-id='iddd2274b'] {  /* artboard */
     left: 300px;
 top: 300px;
 visibility: visible;
@@ -40,9 +40,9 @@ height: 720px;
 background-color: white;
 font-size: 13px; 
     
-        left: 0px;
-        top: 0px;
-      
+  left: 0px;
+  top: 0px;
+
 }
 
 
@@ -51,67 +51,37 @@ font-size: 13px;
 
     
     
-[data-id='ide4c5a99'] {  /* svg-path */
-    left: 100px;
-top: 100px;
+[data-id='id8f99791'] {  /* svg-path */
+    left: 32px;
+top: 16px;
 visibility: visible;
 position: absolute;
-width: 267px;
-height: 257px;
+width: 161px;
+height: 216px;
 overflow: visible;
 font-size: 13px; 
     
 }
 
-[data-id='ide4c5a99'] path { 
-fill: transparent;
-fill-opacity: 1;
-marker-start: url(#start);
-marker-end: url(#head);
-stroke: rgba(0, 0, 0, 0.2); 
+[data-id='id8f99791'] path { 
+      stroke: black;
+		stroke-width: 1;
+		stroke-dasharray:  ;
+		fill: rgba(15,0,0,0.6); 
   }
 
-
-
-    
-    
-[data-id='id62d9368'] {  /* layer */
-    left: -264.5px;
-top: -39px;
-visibility: visible;
-position: absolute;
-width: 163px;
-height: 116px;
-background-color: rgb(244,89,99);
-font-size: 13px;
-transform: rotate(337.7107899355409deg); 
-    
-}
 
 
 
     </style>
   </head>
   <body>
+      <div element-item artboard data-id="iddd2274b"><svg class='element-item path ' data-id="id8f99791" ><path class='svg-path-item' d="M 0 53L 47 216L 51 66L 121 167L 0 53Z " /></svg></div>
 
-
+      <svg width="0" height="0">
       
-      <div class='element-item artboard' data-id="idf269294">
-      
-          <svg class='element-item path motion-based' data-id="ide4c5a99" >
-            <path class='svg-path-item' d="M 0 91L 222 0L 267 212L 57 257L 14 127L 0 91Z" />
-          </svg>    
-        
-        <div class='element-item layer' data-id="id62d9368">
-          
-        </div>
-        
-        </div>
-        
-          
-          <svg width="0" height="0">
-          
-        </svg>
+    </svg>
+    
 <!--         
 
       <div class="container">
@@ -136,31 +106,47 @@ var player = new anipa.Player([
     {
         "properties": [
             {
-                "property": "offset-path",
+                "property": "fill",
                 "keyframes": [
                     {
                         "time": 0,
-                        "value": "ide4c5a99,,,",
+                        "value": "rgba(196,110,110,0.6)",
                         "timing": "linear"
                     },
                     {
-                        "time": 5580.645161290323,
-                        "value": "ide4c5a99,,,",
+                        "time": 4137.931034482759,
+                        "value": "rgba(15,0,0,0.6)",
+                        "timing": "linear"
+                    }
+                ]
+            },
+            {
+                "property": "d",
+                "keyframes": [
+                    {
+                        "time": 0,
+                        "value": "M 0 53L 47 216L 161 106L 67 0L 0 53Z ",
+                        "timing": "linear"
+                    },
+                    {
+                        "time": 4133.333333333334,
+                        "value": "M 0 53L 47 216L 51 66L 121 167L 0 53Z ",
                         "timing": "linear"
                     }
                 ]
             }
         ],
-        "selector": "[data-id=\"id62d9368\"]"
+        "selector": "[data-id=\"id8f99791\"] > *"
     }
 ], {
-    "duration": 5580.645161290323,
-    "iterationCount": 1,
+    "duration": 4137.931034482759,
+    "iterationCount": 0,
     "fps": 60,
     "speed": 1,
-    "direction": "normal"
+    "direction": "alternate"
 });
 player.play();
+
         
         
           // var player = new anipa.Player([

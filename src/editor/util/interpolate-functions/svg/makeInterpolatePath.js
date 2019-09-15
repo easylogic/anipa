@@ -36,7 +36,6 @@ export function makeInterpolatePath (layer, property, startValue, endValue) {
         }
     }
 
-
     return (rate, t) => {
         var segments = list.map(it => {
 
@@ -45,8 +44,8 @@ export function makeInterpolatePath (layer, property, startValue, endValue) {
                 values: it.values(rate, t)
             }
         })
-        var results =  returnParser.joinPath(segments)
+        var d =  returnParser.joinPath(segments)
 
-        return results;
+        layer.attr('d', d);
     } 
 }
