@@ -127,4 +127,21 @@ player.play();
 | d | d: {path} |
 | points | points: {polygon} |
 
+
+# Development 
+
+```
+git clone https://github.com/easylogic/anipa 
+cd anipa
+npm install 
+npm run dev 
+```
+
+# Build 
+
+```
+npm run build
+```
+
+
 # License : MIT
