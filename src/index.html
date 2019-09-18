@@ -28,15 +28,16 @@
       position: relative;
     }
 
+    
 
     
-    [data-id='iddd2274b'] {  /* artboard */
-    left: 300px;
-top: 300px;
+    [data-id='id3a89309'] {  /* artboard */
+    left: 117px;
+top: 76px;
 visibility: visible;
 position: absolute;
-width: 375px;
-height: 720px;
+width: 357px;
+height: 382px;
 background-color: white;
 font-size: 13px; 
     
@@ -51,24 +52,20 @@ font-size: 13px;
 
     
     
-[data-id='id8f99791'] {  /* svg-path */
-    left: 32px;
-top: 16px;
+[data-id='id2bc4f12'] {  /* layer */
+    left: 12px;
+top: 54px;
 visibility: visible;
 position: absolute;
-width: 161px;
-height: 216px;
-overflow: visible;
-font-size: 13px; 
+width: 201px;
+height: 246px;
+background-color: rgb(137,146,0);
+font-size: 13px;
+border-radius: 44.89977796875px 44.89977796875px 44.89977796875px 44.89977796875px; 
     
 }
 
-[data-id='id8f99791'] path { 
-      stroke: black;
-		stroke-width: 1;
-		stroke-dasharray:  ;
-		fill: rgba(15,0,0,0.6); 
-  }
+
 
 
 
@@ -76,11 +73,14 @@ font-size: 13px;
     </style>
   </head>
   <body>
-      <div element-item artboard data-id="iddd2274b"><svg class='element-item path ' data-id="id8f99791" ><path class='svg-path-item' d="M 0 53L 47 216L 51 66L 121 167L 0 53Z " /></svg></div>
 
-      <svg width="0" height="0">
-      
-    </svg>
+    <div class="element-item artboard" data-id="id3a89309"><div class="element-item layer" data-id="id2bc4f12"></div></div>
+
+    <svg width="0" height="0">
+    
+  </svg>
+  
+  
     
 <!--         
 
@@ -104,46 +104,31 @@ font-size: 13px;
 
 var player = new anipa.Player([
     {
+        "selector": "[data-id=\"id2bc4f12\"]",
         "properties": [
             {
-                "property": "fill",
+                "property": "border-radius",
                 "keyframes": [
                     {
                         "time": 0,
-                        "value": "rgba(196,110,110,0.6)",
+                        "value": "",
                         "timing": "linear"
                     },
                     {
-                        "time": 4137.931034482759,
-                        "value": "rgba(15,0,0,0.6)",
-                        "timing": "linear"
-                    }
-                ]
-            },
-            {
-                "property": "d",
-                "keyframes": [
-                    {
-                        "time": 0,
-                        "value": "M 0 53L 47 216L 161 106L 67 0L 0 53Z ",
-                        "timing": "linear"
-                    },
-                    {
-                        "time": 4133.333333333334,
-                        "value": "M 0 53L 47 216L 51 66L 121 167L 0 53Z ",
+                        "time": 4215.938303341903,
+                        "value": "45px",
                         "timing": "linear"
                     }
                 ]
             }
-        ],
-        "selector": "[data-id=\"id8f99791\"] > *"
+        ]
     }
 ], {
-    "duration": 4137.931034482759,
-    "iterationCount": 0,
+    "duration": 4215.938303341903,
+    "iterationCount": 1,
     "fps": 60,
     "speed": 1,
-    "direction": "alternate"
+    "direction": "normal"
 });
 player.play();
 

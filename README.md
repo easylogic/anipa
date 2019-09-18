@@ -73,6 +73,7 @@ player.play();
 | {number} | 10 <br > 0.3434<br > |
 | {boolean} | "alternate" <br /> "normal" <br /> | 
 | {rotate} | 10deg <br /> 0.5turn <br /> |
+| {border-radius} | 10px <br /> 10px 10px 10px 10px |
 | {filter} | blur({length}) hue-rotate({rotate}) ... | 
 | {clip-path} | none <br />circle() <br /> ellipse() <br /> inset() <br /> polygon() <br />, ... | 
 | {transform} | translateX({length}) translateY({length}) rotate({$rotate}) ... | 
@@ -117,6 +118,7 @@ player.play();
 | offset-path |  offset-path: {pathLayerId},{distance:length},{rotateStatus:boolean},{rotate:rotate} | 
 | box-shadow | box-shadow: {offsetX:length} {offsetY:length} {blurRadius:length} {spreadRadius:length} color:color} <br />, ... | 
 | text-shadow | text-shadow: {offsetX:length} {offsetY:length} {blurRadius:length} {color:color} <br />, ... | 
+| border-radius | border-radius: {border-radius} | 
 | filter | filter: {filter} | 
 | backdrop-filter | backdrop-filter: {filter} | 
 | clip-path | clip-path: {clip-path} | 
