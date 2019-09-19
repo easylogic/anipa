@@ -148,6 +148,7 @@ export class Timeline {
     switch(property) {
     case 'offset-path':
     case 'background-image':
+    case 'border':
       return true; 
     }
 

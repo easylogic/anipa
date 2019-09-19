@@ -61,7 +61,7 @@ width: 201px;
 height: 246px;
 background-color: rgb(137,146,0);
 font-size: 13px;
-border-radius: 44.89977796875px 44.89977796875px 44.89977796875px 44.89977796875px; 
+/* border-radius: 44.89977796875px 44.89977796875px 44.89977796875px 44.89977796875px;  */
     
 }
 
@@ -107,20 +107,35 @@ var player = new anipa.Player([
         "selector": "[data-id=\"id2bc4f12\"]",
         "properties": [
             {
-                "property": "border-radius",
-                "keyframes": [
-                    {
-                        "time": 0,
-                        "value": "",
-                        "timing": "linear"
-                    },
-                    {
-                        "time": 4215.938303341903,
-                        "value": "45px",
-                        "timing": "linear"
-                    }
-                ]
-            }
+              'property': 'border',
+              'keyframes': [
+                {
+                    "time": 0,
+                    "value": "border:1px solid black",
+                    "timing": "linear"
+                },
+                {
+                    "time": 4215.938303341903,
+                    "value": "border:100px solid yellow",
+                    "timing": "linear"
+                }
+              ]
+            },
+            {
+              'property': 'border-top-color',
+              'keyframes': [
+                {
+                    "time": 0,
+                    "value": "white",
+                    "timing": "linear"
+                },
+                {
+                    "time": 4215.938303341903,
+                    "value": "brown",
+                    "timing": "linear"
+                }
+              ]
+            },            
         ]
     }
 ], {

@@ -18,6 +18,7 @@ import { makeInterpolateStrokeDashArrray } from "./interpolate-functions/makeInt
 import { makeInterpolatePath } from "./interpolate-functions/svg/makeInterpolatePath";
 import { makeInterpolatePolygon } from "./interpolate-functions/svg/makeInterpolatePolygon";
 import { makeInterpolateOffsetPath } from "./interpolate-functions/makeInterpolateOffsetPath";
+import { makeInterpolateBorder } from "./interpolate-functions/makeInterpolateBorder";
 
 const DEFAULT_FUCTION = () => (rate, t) => { } 
 
@@ -26,6 +27,8 @@ function makeInterpolateCustom (property) {
     switch(property) {
     case 'border-radius':
         return makeInterpolateBorderRadius
+    case 'border':
+        return makeInterpolateBorder
     case 'box-shadow':
         return makeInterpolateBoxShadow        
     case 'text-shadow':
@@ -70,6 +73,11 @@ function makeInterpolate (layer, property, startValue, endValue, container) {
     case 'font-stretch':
     case 'font-weight':
     case 'text-stroke-width':
+    case 'border-width':
+    case 'border-top-width':
+    case 'border-right-width':        
+    case 'border-left-width':
+    case 'border-bottom-width':        
         return makeInterpolateLength(layer, property, startValue, endValue, property, container);
     case 'fill-opacity':
     case 'opacity':
@@ -81,11 +89,21 @@ function makeInterpolate (layer, property, startValue, endValue, container) {
     case 'text-stroke-color':
     case 'fill':
     case 'stroke':
+    case 'border-color':
+    case 'border-top-color':
+    case 'border-right-color':        
+    case 'border-left-color':
+    case 'border-bottom-color':
         return makeInterpolateColor(layer, property, startValue, endValue, container);
     case 'mix-blend-mode':
     case 'fill-rule':
     case 'stroke-linecap':
     case 'stroke-linejoin':
+    case 'border-style':
+    case 'border-top-style':
+    case 'border-right-style':        
+    case 'border-left-style':
+    case 'border-bottom-style':        
         return makeInterpolateString(layer, property, startValue, endValue, container); 
     case 'rotate':
         return makeInterpolateRotate(layer, property, startValue, endValue, container);
