@@ -31,13 +31,22 @@
     
 
     
-    [data-id='id3a89309'] {  /* artboard */
-    left: 117px;
-top: 76px;
+
+    :root {
+        
+      }
+      /* keyframe */
+      
+    
+
+    
+[data-id='id1fafb7a'] {  /* artboard */
+    left: 300px;
+top: 300px;
 visibility: visible;
 position: absolute;
-width: 357px;
-height: 382px;
+width: 300px;
+height: 600px;
 background-color: white;
 font-size: 13px; 
     
@@ -52,20 +61,109 @@ font-size: 13px;
 
     
     
-[data-id='id2bc4f12'] {  /* layer */
-    left: 12px;
-top: 54px;
-visibility: visible;
+[data-id='idd930cb7'] {  /* cube */
+    left: 145px;
+top: 273px;
 position: absolute;
-width: 201px;
-height: 246px;
-background-color: rgb(137,146,0);
-font-size: 13px;
-/* border-radius: 44.89977796875px 44.89977796875px 44.89977796875px 44.89977796875px;  */
+width: 192px;
+height: 242px;
+transform-style: preserve-3d;
+transform: rotateX(10deg) rotateY(30deg) rotate(167.06454853290202deg); 
     
 }
 
+[data-id='idd930cb7'] div { 
+      
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          bottom: 0px;
+          right: 0px;
+          opacity: 1;
+          pointer-events: none;
+          background-color: rgb(68,253,174);
+          border: 1px solid #333;
+          
+        ; 
+  }
+[data-id='idd930cb7'] .front { 
+      
+          transform:rotateY(0deg) translateZ(96px);
+          width: 192px;
+          height: 242px;     
+          
+        ; 
+  }
+[data-id='idd930cb7'] .back { 
+      
+          transform: rotateY(180deg) translateZ(96px);
+          width: 192px;
+          height: 242px;            
+                            
+        ; 
+  }
+[data-id='idd930cb7'] .left { 
+      
+          transform: rotateY(-90deg) translateZ(96px);
+          width: 192px;
+          height: 242px;    
+                                    
+        ; 
+  }
+[data-id='idd930cb7'] .right { 
+      
+          transform: rotateY(90deg) translateZ(96px);
+          width: 192px;
+          height: 242px;      
+                                  
+        ; 
+  }
+[data-id='idd930cb7'] .top { 
+      
+          transform: rotateX(90deg) translateZ(121px);
+          top: 25px;
+          width: 192px;
+          height: 192px;
+                    
+        ; 
+  }
+[data-id='idd930cb7'] .bottom { 
+      
+          transform: rotateX(-90deg) translateZ(121px);
+          top: 25px;          
+          width: 192px;
+          height: 192px;    
+                          
+        ; 
+  }
 
+
+
+    
+    
+[data-id='id1170554'] {  /* svg-path */
+    left: 45px;
+top: 394px;
+visibility: visible;
+position: absolute;
+width: 196px;
+height: 183px;
+overflow: visible;
+font-size: 13px; 
+    
+}
+
+[data-id='id1170554'] path { 
+      fill: transparent;
+		fill-opacity: 1;
+		marker-start: url(#start);
+		marker-end: url(#head);
+		stroke: rgba(0, 0, 0, 0.2); 
+  }
+
+
+
+    
 
 
 
@@ -74,11 +172,14 @@ font-size: 13px;
   </head>
   <body>
 
-    <div class="element-item artboard" data-id="id3a89309"><div class="element-item layer" data-id="id2bc4f12"></div></div>
+    <div class="element-item artboard" data-id="id1fafb7a"><div class='element-item cube' data-id="idd930cb7"><div class='front'></div><div class='back'></div><div class='left'></div><div class='right'></div><div class='top'></div><div class='bottom'></div></div><svg class='element-item path motion-based' data-id="id1170554" ><path class='svg-path-item' d="M 0 45L 88 183L 196 0" /></svg></div>
 
     <svg width="0" height="0">
     
   </svg>
+  
+  
+  
   
   
     
@@ -104,42 +205,27 @@ font-size: 13px;
 
 var player = new anipa.Player([
     {
-        "selector": "[data-id=\"id2bc4f12\"]",
+        "selector": "[data-id=\"idd930cb7\"]",
         "properties": [
             {
-              'property': 'border',
-              'keyframes': [
-                {
-                    "time": 0,
-                    "value": "border:1px solid black",
-                    "timing": "linear"
-                },
-                {
-                    "time": 4215.938303341903,
-                    "value": "border:100px solid yellow",
-                    "timing": "linear"
-                }
-              ]
-            },
-            {
-              'property': 'border-top-color',
-              'keyframes': [
-                {
-                    "time": 0,
-                    "value": "white",
-                    "timing": "linear"
-                },
-                {
-                    "time": 4215.938303341903,
-                    "value": "brown",
-                    "timing": "linear"
-                }
-              ]
-            },            
+                "property": "offset-path",
+                "keyframes": [
+                    {
+                        "time": 0,
+                        "value": "id1170554,,element,",
+                        "timing": "linear"
+                    },
+                    {
+                        "time": 1894.374282433984,
+                        "value": "id1170554,,,",
+                        "timing": "linear"
+                    }
+                ]
+            }
         ]
     }
 ], {
-    "duration": 4215.938303341903,
+    "duration": 1894.374282433984,
     "iterationCount": 1,
     "fps": 60,
     "speed": 1,

@@ -96,12 +96,6 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue,
             top: Length.px(obj.y + screenY - ty.value)
         }
 
-        // console.log(results, rate, t);
-
-        // layer.setScreenX(results.x)
-        // layer.setScreenY(results.y)
-
-
         if (startObject.rotateStatus === 'element') {
 
         } else {
@@ -110,27 +104,8 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue,
             var angle = calculateAngle(next.x - current.x, next.y - current.y)
 
             var newAngle = Length.deg(innerInterpolateAngle(startObject.rotateStatus, angle))
-            // layer.rotate = newAngle;
 
-            var transform = layer.css('transform') || '';
-
-            // transform 을 어떻게 변형하지 
-            if (transform.indexOf('rotate') === -1) {
-                results.transform = `rotate(${newAngle})`
-            } else {
-                var arr = Transform.parseStyle(transform) 
-                var rotateProperty = arr.filter(it => ['rotate', 'rotateZ'].includes(it.type));
-
-                if (rotateProperty.length) {
-                    rotateProperty[0].value = [newAngle]
-                } else {
-                    arr.push({
-                        type: 'rotate',
-                        value: [newAngle]
-                    })
-                }
-                results.transform = Transform.join(arr);
-            }
+            results.transform = Transform.replace(layer.el.style['transform'], { type: 'rotate', value: [ newAngle] })
         }
 
 
