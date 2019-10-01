@@ -4,6 +4,7 @@ import makeInterpolateOffset from "./offset-path/makeInterpolateOffset";
 import { Length } from "../../unit/Length";
 import { calculateAngle } from "../../../util/functions/math";
 import { Transform } from "../../css-property/Transform";
+import PolygonParser from "../../parse/PolygonParser";
 
 export function makeInterpolateOffsetPath(layer, property, startValue, endValue, container) {
 
@@ -31,7 +32,13 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue,
 
     if (container) {
         var svgLayer = container.$(`[data-id="${startObject.id}"]`)
-        var pathLayer = svgLayer.$('path');
+
+        var isPath = true; 
+        var pathLayer = svgLayer.$('path');    
+        if (svgLayer.hasClass('polygon')) {
+            var isPath = false ; 
+            var pathLayer = svgLayer.$('polygon');
+        }
         var rect = svgLayer.rect();
         // parser.translate(pathLayer.screenX.value, pathLayer.screenY.value)
         screenX = rect.left
@@ -39,7 +46,13 @@ export function makeInterpolateOffsetPath(layer, property, startValue, endValue,
 
         innerInterpolate = (rate, t, timing) => {
             // console.log(pathLayer, pathLayer.attr('d'),  pathLayer.css('d'))
-            var parser = new PathParser(pathLayer.attr('d'));
+            if (isPath) {
+                var parser = new PathParser(pathLayer.attr('d'));
+            } else {
+                var polygonParser = new PolygonParser (pathLayer.attr('points'));
+                var parser = new PathParser(polygonParser.toPathString());
+            }
+
             var {totalLength, interpolateList} = makeInterpolateOffset(parser.segments); 
 
             var distance = startObject.distance.toPx(totalLength)

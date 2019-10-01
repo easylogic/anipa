@@ -14,7 +14,7 @@ export default class PolygonParser extends PathParser {
 
     reset (points = '') {
         this.segments =  [];
-        this.points = points; 
+        this.points = points;  
         
         this.parse()
     }

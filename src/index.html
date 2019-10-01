@@ -38,9 +38,8 @@
       /* keyframe */
       
     
-
     
-[data-id='id1fafb7a'] {  /* artboard */
+[data-id='id98a9612'] {  /* artboard */
     left: 300px;
 top: 300px;
 visibility: visible;
@@ -61,99 +60,19 @@ font-size: 13px;
 
     
     
-[data-id='idd930cb7'] {  /* cube */
-    left: 145px;
-top: 273px;
-position: absolute;
-width: 192px;
-height: 242px;
-transform-style: preserve-3d;
-transform: rotateX(10deg) rotateY(30deg) rotate(167.06454853290202deg); 
-    
-}
-
-[data-id='idd930cb7'] div { 
-      
-          position: absolute;
-          left: 0px;
-          top: 0px;
-          bottom: 0px;
-          right: 0px;
-          opacity: 1;
-          pointer-events: none;
-          background-color: rgb(68,253,174);
-          border: 1px solid #333;
-          
-        ; 
-  }
-[data-id='idd930cb7'] .front { 
-      
-          transform:rotateY(0deg) translateZ(96px);
-          width: 192px;
-          height: 242px;     
-          
-        ; 
-  }
-[data-id='idd930cb7'] .back { 
-      
-          transform: rotateY(180deg) translateZ(96px);
-          width: 192px;
-          height: 242px;            
-                            
-        ; 
-  }
-[data-id='idd930cb7'] .left { 
-      
-          transform: rotateY(-90deg) translateZ(96px);
-          width: 192px;
-          height: 242px;    
-                                    
-        ; 
-  }
-[data-id='idd930cb7'] .right { 
-      
-          transform: rotateY(90deg) translateZ(96px);
-          width: 192px;
-          height: 242px;      
-                                  
-        ; 
-  }
-[data-id='idd930cb7'] .top { 
-      
-          transform: rotateX(90deg) translateZ(121px);
-          top: 25px;
-          width: 192px;
-          height: 192px;
-                    
-        ; 
-  }
-[data-id='idd930cb7'] .bottom { 
-      
-          transform: rotateX(-90deg) translateZ(121px);
-          top: 25px;          
-          width: 192px;
-          height: 192px;    
-                          
-        ; 
-  }
-
-
-
-    
-    
-[data-id='id1170554'] {  /* svg-path */
-    left: 45px;
-top: 394px;
+[data-id='id89db3c3'] {  /* svg-polygon */
+    left: -94px;
+top: -165px;
 visibility: visible;
 position: absolute;
-width: 196px;
-height: 183px;
+width: 319px;
+height: 450px;
 overflow: visible;
 font-size: 13px; 
     
 }
 
-[data-id='id1170554'] path { 
+[data-id='id89db3c3'] polygon { 
       fill: transparent;
 		fill-opacity: 1;
 		marker-start: url(#start);
@@ -164,7 +83,26 @@ font-size: 13px;
 
 
     
+    
+[data-id='id5e440cf'] {  /* layer */
+    left: -174px;
+top: -9.5px;
+visibility: visible;
+position: absolute;
+width: 160px;
+height: 177px;
+background-color: rgb(167,140,122);
+transform: rotate(89.72186733270347deg);
+font-size: 13px;
+offset-path: id89db3c3,,,; 
+    
+}
 
+
+
+
+
+    
 
 
 
@@ -172,17 +110,13 @@ font-size: 13px;
   </head>
   <body>
 
-    <div class="element-item artboard" data-id="id1fafb7a"><div class='element-item cube' data-id="idd930cb7"><div class='front'></div><div class='back'></div><div class='left'></div><div class='right'></div><div class='top'></div><div class='bottom'></div></div><svg class='element-item path motion-based' data-id="id1170554" ><path class='svg-path-item' d="M 0 45L 88 183L 196 0" /></svg></div>
+  
+<div class="element-item artboard" data-id="id98a9612" data-title="New ArtBoard"><svg class='element-item polygon' motion-based data-id="id89db3c3"><polygon class='svg-polygon-item' points="0,244 1,450 319,416 196,0" /></svg><div class="element-item layer" data-id="id5e440cf" data-title="New Layer"></div></div>
 
-    <svg width="0" height="0">
-    
-  </svg>
-  
-  
-  
-  
-  
-    
+<svg width="0" height="0">
+
+</svg>
+
 <!--         
 
       <div class="container">
@@ -205,19 +139,19 @@ font-size: 13px;
 
 var player = new anipa.Player([
     {
-        "selector": "[data-id=\"idd930cb7\"]",
+        "selector": "[data-id=\"id5e440cf\"]",
         "properties": [
             {
                 "property": "offset-path",
                 "keyframes": [
                     {
                         "time": 0,
-                        "value": "id1170554,,element,",
+                        "value": "id89db3c3,,,",
                         "timing": "linear"
                     },
                     {
-                        "time": 1894.374282433984,
-                        "value": "id1170554,,,",
+                        "time": 4289.044289044289,
+                        "value": "id89db3c3,,,",
                         "timing": "linear"
                     }
                 ]
@@ -225,8 +159,8 @@ var player = new anipa.Player([
         ]
     }
 ], {
-    "duration": 1894.374282433984,
-    "iterationCount": 1,
+    "duration": 4289.044289044289,
+    "iterationCount": 0,
     "fps": 60,
     "speed": 1,
     "direction": "normal"
