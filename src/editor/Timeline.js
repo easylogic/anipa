@@ -160,6 +160,7 @@ export class Timeline {
     switch(property) {
     case 'd':
     case 'points':
+    case 'text': 
       return true; 
     }
 

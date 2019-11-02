@@ -1,6 +1,6 @@
 {
   "name": "@easylogic/anipa",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "js animation library",
   "main": "dist/main.js",
   "directories": {

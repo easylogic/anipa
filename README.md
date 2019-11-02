@@ -80,6 +80,7 @@ player.play();
 | {transform} | translateX({length}) translateY({length}) rotate({$rotate}) ... | 
 | {path} | "M 20 30 L 20 50 Z" | 
 | {polygon} | "30,20 50,80 90,200" | 
+| {text} | "Insert a text" | 
 
 ## Animatable Properties
 
@@ -134,9 +135,13 @@ player.play();
 | border-right-style | {boolean} |
 | border-bottom-style | {boolean} |
 
-| Property | how to use | 
+| Property | Value Type | 
 |----------|--------------|
 | rotate | {rotate} | 
+
+| Property | Value Type | 
+|----------|--------------|
+| text | {text} | 
 
 ### Multi Value Type 
 
