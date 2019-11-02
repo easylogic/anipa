@@ -81,6 +81,8 @@ function makeInterpolate (layer, property, startValue, endValue, container) {
     case 'border-right-width':        
     case 'border-left-width':
     case 'border-bottom-width':        
+    case 'textLength':
+    case 'startOffset':    
         return makeInterpolateLength(layer, property, startValue, endValue, property, container);
     case 'fill-opacity':
     case 'opacity':
@@ -106,7 +108,8 @@ function makeInterpolate (layer, property, startValue, endValue, container) {
     case 'border-top-style':
     case 'border-right-style':        
     case 'border-left-style':
-    case 'border-bottom-style':        
+    case 'border-bottom-style':     
+    case 'lengthAdjust': 
         return makeInterpolateString(layer, property, startValue, endValue, container); 
     case 'rotate':
         return makeInterpolateRotate(layer, property, startValue, endValue, container);

@@ -149,6 +149,9 @@ export class Timeline {
     case 'offset-path':
     case 'background-image':
     case 'border':
+    case 'lengthAdjust': 
+    case 'textLength':
+    case 'startOffset':      
       return true; 
     }
 
@@ -161,6 +164,9 @@ export class Timeline {
     case 'd':
     case 'points':
     case 'text': 
+    case 'lengthAdjust': 
+    case 'textLength':
+    case 'startOffset':
       return true; 
     }
 
@@ -182,28 +188,33 @@ export class Timeline {
     var layerList = [] 
     filteredList.forEach(it => {
       if (!layerSet.has(it.layer)) {
-        layerSet.set(it.layer, {});
+        layerSet.set(it.layer, {attr: {}, css: {} });
         layerList.push(it.layer);
       }
 
       var layerCss = layerSet.get(it.layer)
 
-
-      if (it.isAttributeFunction) {
+      if (it.isAttributeFunction && it.isResetFunction) { // 속성 설정 property , 함수에서 바로 설정하지 않고 설정 패턴 제공 
+        Object.assign(layerCss.attr, {
+          [it.property]: it.func(time, it.layer, it.layerIndex)
+        });        
+      } else if (it.isAttributeFunction) {
         it.func(time, it.layer, it.layerIndex);
       } else if (it.isResetFunction) {
         var obj =  it.func(time, it.layer, it.layerIndex);
-        Object.assign(layerCss, obj);
+        Object.assign(layerCss.css, obj);
       } else {
-        Object.assign(layerCss, {
+        Object.assign(layerCss.css, {
           [it.property]: it.func(time, it.layer, it.layerIndex)
         });        
       }
     });
 
     layerList.forEach(layer => {
-      layer.css(layerSet.get(layer));
-      this.log(layer, layerSet.get(layer))
+      var tempLayer = layerSet.get(layer);
+      layer.setAttr(tempLayer.attr);
+      layer.css(tempLayer.css);
+      this.log(layer, tempLayer)
     }) 
     this.log('seek end : ', time);
   }
